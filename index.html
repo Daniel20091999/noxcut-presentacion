@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NoxCut — presentación</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@400;600&display=swap">
+<style>:root {
+  --dark: #14131C;
+  --dark2: #1E1C2A;
+  --light: #F4F2FA;
+  --accent: #8B7BFF;
+  --pink: #FF7AB6;
+  --soft: #B9B4CF;
+  --ink: #2A2838;
+  --ink-soft: #55526A;
+}
+body { font-family: 'Inter', Arial, sans-serif; }
+section { padding: 128px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px; counter-increment: page; }
+section.dark { background: var(--dark); color: var(--light); }
+section.light { background: var(--light); color: var(--ink); }
+h1, h2, h3 { font-family: 'Space Grotesk', Arial, sans-serif; }
+h1 { font-size: 120px; font-weight: 700; line-height: 1.0; }
+h2 { font-size: 72px; font-weight: 700; line-height: 1.05; }
+h3 { font-size: 44px; font-weight: 600; line-height: 1.1; }
+p { font-size: 32px; line-height: 1.4; }
+.eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 4px; color: var(--accent); }
+.light .eyebrow { color: #5B48E0; }
+.lead { font-size: 44px; line-height: 1.3; color: var(--soft); }
+.light .lead { color: var(--ink-soft); }
+.muted { color: var(--soft); }
+.light .muted { color: var(--ink-soft); }
+.page { position: absolute; right: 128px; bottom: 64px; width: 120px; text-align: right; font-size: 24px; color: var(--soft); }
+.light .page { color: var(--ink-soft); }
+.page::after { content: counter(page); }
+
+/* Tarjetas */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.cards.four { grid-template-columns: 1fr 1fr 1fr 1fr; }
+.card { background: var(--dark2); border-radius: 24px; padding: 40px; display: flex; flex-direction: column; gap: 16px; border-top: 6px solid var(--accent); }
+.light .card { background: #FFFFFF; border-top: 6px solid #5B48E0; box-shadow: 0 8px 32px rgba(20, 19, 28, 0.08); }
+.card h3 { font-size: 40px; }
+.card .txt { font-size: 28px; line-height: 1.4; color: var(--soft); }
+.light .card .txt { color: var(--ink-soft); }
+.card x-icon { width: 56px; height: 56px; color: var(--accent); }
+.light .card x-icon { color: #5B48E0; }
+
+/* Tecnologías: filas */
+.tech { display: flex; flex-direction: column; gap: 0; }
+.row { display: grid; grid-template-columns: 360px 1fr; gap: 48px; padding: 26px 0; border-top: 2px solid #D9D5E8; align-items: center; }
+.row .k { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 36px; font-weight: 600; color: #5B48E0; }
+.row .v { font-size: 30px; line-height: 1.35; color: var(--ink); }
+
+/* Flujo */
+.flow { display: flex; flex-direction: row; align-items: center; gap: 28px; }
+.step { flex: 1; background: var(--dark2); border-radius: 24px; padding: 40px 32px; display: flex; flex-direction: column; gap: 14px; }
+.step .n { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; font-weight: 700; color: var(--pink); }
+.step h3 { font-size: 38px; }
+.step .txt { font-size: 26px; line-height: 1.4; color: var(--soft); }
+.arrow { width: 48px; height: 24px; background: var(--accent); }
+
+/* Cifras */
+.stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px 64px; }
+.stat { display: flex; flex-direction: column; gap: 8px; }
+.stat .big { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 120px; font-weight: 700; line-height: 1.0; color: var(--accent); }
+.stat .lbl { font-size: 30px; line-height: 1.3; color: var(--soft); }
+
+/* Portada y cierre */
+.cover { justify-content: center; }
+.cover .logo { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 44px; font-weight: 700; letter-spacing: 12px; color: var(--accent); }
+.glow { position: absolute; left: 1100px; top: 140px; width: 760px; height: 760px; background: radial-gradient(circle, #3A2F8C 0%, #14131C 70%); }
+.statement { justify-content: center; background: #5B48E0; color: var(--light); }
+.statement h2 { font-size: 96px; }
+.statement .lead { color: #E6E1FF; }
+
+/* Movimiento: aparece al llegar, por pasos */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.in { animation: rise 600ms ease-out both; animation-delay: calc(var(--i, 0) * 120ms); }
+
+html, body { margin: 0; padding: 0; background: #0b0a10; }
+section { width: 1920px; height: 1080px; position: relative; overflow: hidden; margin: 0 auto 24px; }
+p, h1, h2, h3 { margin: 0; }
+.card .icon { width: 56px; height: 56px; color: var(--accent); }
+.light .card .icon { color: #5B48E0; }
+.arrowshape { width: 48px; height: 40px; background: var(--accent); clip-path: polygon(0 30%, 60% 30%, 60% 0, 100% 50%, 60% 100%, 60% 70%, 0 70%); }
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  body { background: none; }
+  section { margin: 0; page-break-after: always; break-after: page; }
+  .in { animation: none !important; }
+}
+</style></head>
+<body>
+<section id="cover" class="dark cover">
+<div class="glow"></div>
+<p class="logo in" style="--i:0">NOXCUT</p>
+<h1 class="in" style="--i:1; width:1300px">Un editor de vídeo para creadores</h1>
+<p class="lead in" style="--i:2; width:1200px">De un directo de horas a shorts con subtítulos, en tu propio ordenador.</p>
+
+</section>
+
+<section id="que-es" class="light">
+<p class="eyebrow">QUÉ ES</p>
+<h2 style="width:1500px">Convierte directos largos en vídeos cortos listos para publicar</h2>
+<p class="lead" style="width:1400px">Un creador de contenido graba horas de directo. Sacar de ahí shorts para TikTok, Reels o YouTube lleva mucho trabajo a mano: cortar, poner subtítulos, pasar a vertical y dar ritmo.</p>
+<p class="lead" style="width:1400px">NoxCut hace la mayor parte de ese trabajo por ti, y <b>todo funciona en tu ordenador</b>: sin subir el vídeo a ningún servidor.</p>
+<p class="page"></p>
+
+</section>
+
+<section id="que-hace" class="dark">
+<p class="eyebrow">QUÉ HACE</p>
+<h2>Las cuatro piezas</h2>
+<div class="cards">
+<div class="card in" style="--i:0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M4 5h16v11H9l-5 4z"/></svg><h3>Subtítulos automáticos</h3><p class="txt">Escucha el vídeo y pone cada palabra en su momento, con estilos animados como los de los shorts.</p></div>
+<div class="card in" style="--i:1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 4a5 5 0 0 0-4.6 6.9L4 16.3 7.7 20l5.4-5.4A5 5 0 0 0 20 10l-3 3-3-1-1-3 3-3a5 5 0 0 0-2-2z"/></svg><h3>Montaje</h3><p class="txt">Línea de tiempo con cortes, pistas, imágenes, GIF, música y paso a formato vertical.</p></div>
+<div class="card in" style="--i:2"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M12 3l2.8 5.8 6.2.9-4.5 4.4 1.1 6.2L12 17.4 6.4 20.3l1.1-6.2L3 9.7l6.2-.9z"/></svg><h3>Efectos</h3><p class="txt">Transiciones, zoom, filtros de color, animaciones y efectos de sonido, vistos al momento.</p></div>
+<div class="card in" style="--i:3"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg><h3>Ayudas automáticas</h3><p class="txt">Encuentra las partidas, recorta silencios, separa voces y se maneja también con la voz.</p></div>
+</div>
+<p class="page"></p>
+
+</section>
+
+<section id="tecnologias" class="light">
+<p class="eyebrow">CON QUÉ ESTÁ HECHO</p>
+<h2>Tecnologías</h2>
+<div class="tech">
+<div class="row"><p class="k">Lenguaje e interfaz</p><p class="v">Python 3.13 y Qt (PySide6): aplicación de escritorio para Windows y Mac</p></div>
+<div class="row"><p class="k">Vídeo y audio</p><p class="v">FFmpeg para exportar (filtros, mezcla de audio, libass para los subtítulos) y PyAV para leer</p></div>
+<div class="row"><p class="k">Inteligencia artificial</p><p class="v">Modelos que corren en local: Whisper para transcribir y modelos ONNX para separar voces</p></div>
+<div class="row"><p class="k">Cálculo de imagen</p><p class="v">NumPy para el color y los efectos de la vista previa</p></div>
+<div class="row" style="border-bottom:2px solid #D9D5E8"><p class="k">Distribución</p><p class="v">Instaladores propios y actualizaciones automáticas firmadas digitalmente</p></div>
+</div>
+<p class="page"></p>
+
+</section>
+
+<section id="ia-local" class="dark">
+<p class="eyebrow">IA EN LOCAL</p>
+<h2 style="width:1500px">La inteligencia artificial se ejecuta en el ordenador del usuario</h2>
+<div class="cards">
+<div class="card in" style="--i:0"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><h3>Privacidad</h3><p class="txt">El vídeo nunca sale del equipo: no hay servidores ni cuentas en la nube.</p></div>
+<div class="card in" style="--i:1"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg><h3>Velocidad</h3><p class="txt">Aprovecha la tarjeta gráfica (NVIDIA, AMD o Intel) para transcribir y exportar más rápido.</p></div>
+</div>
+<p class="page"></p>
+
+</section>
+
+<section id="como-funciona" class="dark">
+<p class="eyebrow">CÓMO FUNCIONA</p>
+<h2>Lo que ves es lo que exportas</h2>
+<div class="flow">
+<div class="step in" style="--i:0"><p class="n">1</p><h3>Vista previa</h3><p class="txt">Qt dibuja el vídeo, los efectos y los subtítulos al momento.</p></div>
+<div class="arrowshape"></div>
+<div class="step in" style="--i:1"><p class="n">2</p><h3>Mismas cuentas</h3><p class="txt">Cada efecto se calcula una sola vez, en un único sitio.</p></div>
+<div class="arrowshape"></div>
+<div class="step in" style="--i:2"><p class="n">3</p><h3>Exportación</h3><p class="txt">FFmpeg aplica esas mismas cuentas al vídeo final.</p></div>
+</div>
+<p class="muted" style="width:1400px">Las pruebas automáticas comparan, píxel a píxel, la vista previa con el vídeo exportado.</p>
+<p class="page"></p>
+
+</section>
+
+<section id="como-trabajamos" class="light">
+<p class="eyebrow">CÓMO SE TRABAJA</p>
+<h2>Ciclos cortos, siempre probados</h2>
+<div class="cards four">
+<div class="card in" style="--i:0"><h3>Idea</h3><p class="txt">Lo que piden los creadores y la editora que lo usa a diario.</p></div>
+<div class="card in" style="--i:1"><h3>Desarrollo</h3><p class="txt">Con ayuda de un asistente de IA para programar.</p></div>
+<div class="card in" style="--i:2"><h3>Pruebas</h3><p class="txt">Una batería automática que usa la interfaz real, como una persona.</p></div>
+<div class="card in" style="--i:3"><h3>Versión</h3><p class="txt">Se publica y los usuarios la reciben solos al abrir el programa.</p></div>
+</div>
+<p class="page"></p>
+
+</section>
+
+<section id="cifras" class="dark">
+<p class="eyebrow">EN CIFRAS</p>
+<h2>Dos semanas de proyecto</h2>
+<div class="stats">
+<div class="stat in" style="--i:0"><p class="big">~32 000</p><p class="lbl">líneas de código</p></div>
+<div class="stat in" style="--i:1"><p class="big">136</p><p class="lbl">pruebas automáticas</p></div>
+<div class="stat in" style="--i:2"><p class="big">29</p><p class="lbl">versiones publicadas</p></div>
+<div class="stat in" style="--i:3"><p class="big">16</p><p class="lbl">transiciones</p></div>
+<div class="stat in" style="--i:4"><p class="big">32</p><p class="lbl">efectos de sonido propios</p></div>
+<div class="stat in" style="--i:5"><p class="big">2</p><p class="lbl">sistemas: Windows y Mac</p></div>
+</div>
+<p class="page"></p>
+
+</section>
+
+<section id="siguiente" class="statement">
+<p class="eyebrow" style="color:#E6E1FF">LO SIGUIENTE</p>
+<h2 style="width:1500px">Montaje al ritmo de la música, una galería de stickers y más juegos</h2>
+<p class="lead" style="width:1300px">Gracias. ¿Preguntas?</p>
+
+</section>
+
+</body></html>
